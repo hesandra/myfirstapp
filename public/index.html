@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html ng-app='app'>
+<head>
+	<title></title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+  <script src="app.js"></script>
+</head>
+
+<body ng-controller='todoctrl'>
+  <h1>My TodoList</h1>
+  <div>
+    <input ng-model="todo" type="text"> <button ng-click="addTodo()">submit</button>
+  </div>
+  <div>
+    <ul>
+      <li ng-repeat="(idx, todo) in todos"> 
+        {{todo.todo}} 
+        <button ng-click='done()'>Done</button> </li>
+    </ul>
+  </div>
+</body>
+</html>
