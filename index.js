@@ -19,6 +19,7 @@ app.get('/', function (req, res){
 
 app.post('/todo', function(req, res){
   var todo = req.body.todo;
+  console.log(todo, 'todooooo')
   var todo = new Todo({
     todo: todo
   })
@@ -37,19 +38,19 @@ app.get('/todo', function(req, res){
    res.end();
    return
   })
-});  
-app.delete('/todo', function(req, res){
+});
+
+app.delete('/todo/:_id', function(req, res){
   console.log('in delete')
-  console.log(req.body, 'req.body')
-  var id = req.body._id;
+  //console.log(req.body._id, 'reqqq')
+  var id = req.params._id;
   Todo.remove({_id: id}, function(err, todo){
     if (err) {res.send(err);
      } else {
-    res.send(todo);
+    console.log('success');
    }
   })
 })
-
 
 app.listen(8000, function(){
   console.log('listening on port 8000')

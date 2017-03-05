@@ -47,9 +47,20 @@ myApp.controller('todoctrl', ['$scope', '$http', function($scope, $http){
   //$scope.todos.push(item);
 //}
 
-$scope.done = function(idx){
-  console.log($scope.todos, 'TODOS');
-  console.log('INDEX', idx)
-  $scope.todos.splice(idx,1)
+$scope.done = function(index){
+  //console.log('in done function')
+  //console.log($scope.todos[index]._id, 'indeeeexxxxvalue');
+  var _id = $scope.todos[index]._id;
+  //console.log(data, 'dataaaaa');
+  $http({
+      method:'DELETE', 
+      url: '/todo/'+ _id
+      })
+  .then(
+  $scope.todos.splice(index,1)
+  )
+  .catch(function(err){
+  console.error(err)
+  })
  }  
 }])
