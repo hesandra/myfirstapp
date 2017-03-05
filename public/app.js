@@ -26,9 +26,15 @@ myApp.controller('todoctrl', ['$scope', '$http', function($scope, $http){
     }).then(function(response){
       $scope.todos.push(response.data)
       console.log(response, 'POOOOST')
-    }).catch(function(err){
+    }).then(function(){
+    if ($scope.inputField !== undefined)
+      {$scope.inputField.$setPristine()
+    }  
+    })
+    .catch(function(err){
       console.log(err)
     })
+    delete $scope.inputField;
   }
 
   $http({
@@ -59,8 +65,8 @@ $scope.done = function(index){
   .then(
   $scope.todos.splice(index,1)
   )
-  .catch(function(err){
-  console.error(err)
-  })
+  //.catch(function(err){
+  //console.error(err)
+  //})
  }  
 }])

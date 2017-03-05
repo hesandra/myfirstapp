@@ -5,12 +5,14 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
   <script src="app.js"></script>
   <link rel="stylesheet" href="https://bootswatch.com/journal/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="twittler.css">
 </head>
 
-<body ng-controller='todoctrl'>
+<body ng-controller='todoctrl' class='container'>
   <h1>My TodoList</h1>
+  <div class='main'>
   <div>
-    <input ng-model="todo" type="text"> <button ng-click="addTodo()">submit</button>
+    <input ng-model="todo" type="text" name="inputField"> <button ng-click="addTodo()">submit</button>
   </div>
   <div>
     <ul>
@@ -20,6 +22,7 @@
         <button ng-click='done(index)'>Done</button>
       </li>
     </ul>
+  </div>
   </div>
 </body>
 </html>
