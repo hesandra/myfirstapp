@@ -13,9 +13,11 @@
   </div>
   <div>
     <ul>
-      <li ng-repeat="(idx, todo) in todos"> 
+      <!--(key, value)-->
+      <li ng-repeat="(index, todo) in todos"> 
         {{todo.todo}} 
-        <button ng-click='done()'>Done</button> </li>
+        <button ng-click='done(index)'>Done</button>
+      </li>
     </ul>
   </div>
 </body>

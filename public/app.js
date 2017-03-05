@@ -1,4 +1,5 @@
 var myApp = angular.module('app', []);
+
 //myApp.factory('TodoFactory', [function(){
   //var done = function(idx){
     //return $scope.todos.splice(idx,1)
@@ -42,10 +43,13 @@ myApp.controller('todoctrl', ['$scope', '$http', function($scope, $http){
 
 //$scope.realTime = function() {
   //var item = $scope.todo
+  //console.log('item in realtime', item)
   //$scope.todos.push(item);
 //}
 
 $scope.done = function(idx){
+  console.log($scope.todos, 'TODOS');
+  console.log('INDEX', idx)
   $scope.todos.splice(idx,1)
  }  
 }])

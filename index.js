@@ -11,9 +11,7 @@ var app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended : true}));
 
-app.listen(8000, function(){
-  console.log('listening on port 8000')
-});
+
 app.use(express.static('public'));
 app.get('/', function (req, res){
   res.send('index');
@@ -25,7 +23,7 @@ app.post('/todo', function(req, res){
     todo: todo
   })
   todo.save(function (err, todo){
-    if (err) return console.error(err);
+    if (err) return res.send(err);
   })
   res.send(todo);
   res.end(); 
@@ -39,4 +37,20 @@ app.get('/todo', function(req, res){
    res.end();
    return
   })
+});  
+app.delete('/todo', function(req, res){
+  console.log('in delete')
+  console.log(req.body, 'req.body')
+  var id = req.body._id;
+  Todo.remove({_id: id}, function(err, todo){
+    if (err) {res.send(err);
+     } else {
+    res.send(todo);
+   }
+  })
 })
+
+
+app.listen(8000, function(){
+  console.log('listening on port 8000')
+});
